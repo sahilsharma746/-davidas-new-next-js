@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import Breadcrumb from '@/components/Breadcrumb';
+import Img from '@/components/Img';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumbJsonLd, itemListJsonLd } from '@/lib/jsonld';
 import {
@@ -73,8 +74,11 @@ export default async function GridPage({ params }: { params: Promise<Params> }) 
             {products.map((p) => (
               <Link href={productPath(p)} className="jewelry-card" key={p.style}>
                 <div className="jewelry-card__image">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.image} alt={p.name} loading="lazy" />
+                  <Img
+                    src={p.image}
+                    alt={p.name}
+                    sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 400px"
+                  />
                 </div>
                 <div className="jewelry-card__body">
                   <span className="jewelry-card__category">Style #{p.style}</span>

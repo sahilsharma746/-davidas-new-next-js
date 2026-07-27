@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
+import Img from '@/components/Img';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -85,17 +86,17 @@ export default function ContactPage() {
         <div className="container">
           <div className="about-split">
             <div className="about-split__image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src="/images/Contact_page/1.JPG"
                 alt="Davidas Design Concepts building at 220 S. Swing Rd, Greensboro, NC"
+                sizes="(max-width: 900px) 90vw, 600px"
               />
             </div>
             <div className="about-split__image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src="/images/Contact_page/2.JPG"
                 alt="Davidas Design Concepts storefront entrance"
+                sizes="(max-width: 900px) 90vw, 600px"
               />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, Outfit } from 'next/font/google';
 import '@/styles/style.css';
 import '@/styles/gospel.css';
 import '@/styles/bookshelf.css';
@@ -9,6 +10,21 @@ import ScrollReveal from '@/components/ScrollReveal';
 import JsonLd from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 import { localBusinessJsonLd } from '@/lib/jsonld';
+
+// Self-hosted fonts (no render-blocking external request; font-display: swap).
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-cormorant',
+});
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  display: 'swap',
+  variable: '--font-outfit',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -51,15 +67,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // `cz-shortcut-listen`, Grammarly, etc.) inject attributes on <html>/<body>
     // before React hydrates, causing a harmless attribute mismatch. This scopes
     // the suppression to these two elements only.
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${outfit.variable}`}
+      suppressHydrationWarning
+    >
       <body suppressHydrationWarning>
         <MetaPixel />
         <JsonLd data={localBusinessJsonLd()} />

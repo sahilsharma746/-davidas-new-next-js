@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import Img from '@/components/Img';
 
 // Ported from gospel-necklace.html + js/gospel.js
 const PAYPAL_ME_URL = 'http://www.paypal.me/davidasdesign';
@@ -121,13 +122,20 @@ export default function GospelNecklace() {
           {/* Product Images */}
           <div className="gospel-images">
             <div className="gospel-image-box" onClick={() => setViewerOpen(true)}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/Gospel_Necklace/B.png" alt="Gospel Necklace - Click to view in 3D" />
+              <Img
+                src="/images/Gospel_Necklace/B.png"
+                alt="Gospel Necklace - Click to view in 3D"
+                sizes="(max-width: 900px) 90vw, 500px"
+                priority
+              />
               <div className="gospel-image-label">&#9654; Click to View in 3D</div>
             </div>
             <div className="gospel-image-box gospel-image-box--static">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/Gospel_Necklace/Model.jpg" alt="Gospel Necklace - Model View" />
+              <Img
+                src="/images/Gospel_Necklace/Model.jpg"
+                alt="Gospel Necklace - Model View"
+                sizes="(max-width: 900px) 90vw, 500px"
+              />
             </div>
           </div>
 

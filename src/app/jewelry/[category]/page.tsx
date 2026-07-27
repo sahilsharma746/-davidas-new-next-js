@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import Breadcrumb from '@/components/Breadcrumb';
+import Img from '@/components/Img';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
 import { CATEGORIES, getCategory, getProductsIn } from '@/data/products';
@@ -68,8 +69,11 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
                 <Link href={subHref(cat.id, sub.id)} className="jewelry-card" key={sub.id}>
                   <div className="jewelry-card__image">
                     {img && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={img} alt={`${cat.label} ${sub.label}`} loading="lazy" />
+                      <Img
+                        src={img}
+                        alt={`${cat.label} ${sub.label}`}
+                        sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 400px"
+                      />
                     )}
                   </div>
                   <div className="jewelry-card__body">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import GemReadMore from '@/components/GemReadMore';
+import Img from '@/components/Img';
 
 export const metadata: Metadata = {
   title: 'Gem of the Month — Paraiba Tourmaline',
@@ -15,10 +16,11 @@ export default function GemPage() {
       <div className="container">
         <div className="gem-feature">
           <div className="gem-feature__image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Img
               src="/images/Gem_Profile_Pictures/Paraiba%20Tourmaline.jpg"
               alt="Paraiba Tourmaline gemstone"
+              sizes="280px"
+              priority
             />
           </div>
           <div className="gem-feature__content">

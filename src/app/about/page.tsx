@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Img from '@/components/Img';
 
 export const metadata: Metadata = {
   title: 'About Us — Greensboro, NC',
@@ -23,10 +24,11 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-split">
             <div className="about-split__image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src="/images/Flash%20Page/Neck%20-%201.jpg"
                 alt="Custom necklace with pear shape sapphire pendant"
+                sizes="(max-width: 900px) 90vw, 600px"
+                priority
               />
             </div>
             <div className="about-split__content">

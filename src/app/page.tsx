@@ -1,5 +1,8 @@
 import Link from 'next/link';
+import Img from '@/components/Img';
 import { SITE } from '@/lib/site';
+
+const CARD_SIZES = '(max-width: 600px) 90vw, (max-width: 900px) 45vw, 400px';
 
 // Homepage — ported from index.html. Uses the site-default metadata from layout.tsx.
 export default function HomePage() {
@@ -105,10 +108,11 @@ export default function HomePage() {
         <div className="container">
           <div className="about-split">
             <div className="about-split__image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src="/images/Cross%20Pendants/113-334/A.png"
                 alt="Custom designed cross pendant in yellow gold"
+                sizes="(max-width: 900px) 90vw, 600px"
+                priority
               />
             </div>
             <div className="about-split__content">
@@ -144,8 +148,7 @@ export default function HomePage() {
           <div className="jewelry-grid" data-stagger>
             <Link href="/jewelry/ladies" className="jewelry-card">
               <div className="jewelry-card__image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Ladies_Rings/405-713/D.png" alt="Ladies jewelry collection" />
+                <Img src="/images/Ladies_Rings/405-713/D.png" alt="Ladies jewelry collection" sizes={CARD_SIZES} />
               </div>
               <div className="jewelry-card__body">
                 <span className="jewelry-card__category">Ladies</span>
@@ -155,8 +158,7 @@ export default function HomePage() {
             </Link>
             <Link href="/jewelry/religious" className="jewelry-card">
               <div className="jewelry-card__image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Cross%20Pendants/113-334/A.png" alt="Religious jewelry collection" />
+                <Img src="/images/Cross%20Pendants/113-334/A.png" alt="Religious jewelry collection" sizes={CARD_SIZES} />
               </div>
               <div className="jewelry-card__body">
                 <span className="jewelry-card__category">Religious Jewelry</span>
@@ -166,8 +168,7 @@ export default function HomePage() {
             </Link>
             <Link href="/jewelry/wedding" className="jewelry-card">
               <div className="jewelry-card__image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Ladies_Rings/417-186/C.png" alt="Wedding and engagement rings" />
+                <Img src="/images/Ladies_Rings/417-186/C.png" alt="Wedding and engagement rings" sizes={CARD_SIZES} />
               </div>
               <div className="jewelry-card__body">
                 <span className="jewelry-card__category">Wedding &amp; Engagement</span>
@@ -177,8 +178,7 @@ export default function HomePage() {
             </Link>
             <Link href="/jewelry/gents" className="jewelry-card">
               <div className="jewelry-card__image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Gents%20Rings/415-821/E-new.png" alt="Gents rings and pendants" />
+                <Img src="/images/Gents%20Rings/415-821/E-new.png" alt="Gents rings and pendants" sizes={CARD_SIZES} />
               </div>
               <div className="jewelry-card__body">
                 <span className="jewelry-card__category">Gents</span>
@@ -188,8 +188,7 @@ export default function HomePage() {
             </Link>
             <Link href="/jewelry/specialty" className="jewelry-card">
               <div className="jewelry-card__image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Professional/647-333/F.png" alt="Specialty and professional jewelry" />
+                <Img src="/images/Professional/647-333/F.png" alt="Specialty and professional jewelry" sizes={CARD_SIZES} />
               </div>
               <div className="jewelry-card__body">
                 <span className="jewelry-card__category">Specialty</span>
@@ -209,10 +208,10 @@ export default function HomePage() {
         <div className="container">
           <div className="gem-feature">
             <div className="gem-feature__image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src="/images/Gem_Profile_Pictures/Paraiba%20Tourmaline.jpg"
                 alt="Paraiba Tourmaline gemstone"
+                sizes="280px"
               />
             </div>
             <div className="gem-feature__content">

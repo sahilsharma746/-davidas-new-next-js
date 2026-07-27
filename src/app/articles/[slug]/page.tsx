@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '@/styles/article.css';
+import Img from '@/components/Img';
 import JsonLd from '@/components/JsonLd';
 import { articleJsonLd, breadcrumbJsonLd } from '@/lib/jsonld';
 import { ARTICLES, getArticle, articleOgImage } from '@/lib/articles';
@@ -58,8 +59,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
 
         {a.image && (
           <div className="article-page__image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={a.image} alt={a.title} />
+            <Img src={a.image} alt={a.title} sizes="(max-width: 600px) 90vw, 400px" priority />
           </div>
         )}
 

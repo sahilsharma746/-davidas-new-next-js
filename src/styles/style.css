@@ -17,8 +17,8 @@
   --color-green: #006f00;
   --color-green-light: #00b93d;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Outfit', -apple-system, sans-serif;
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-body: var(--font-outfit), 'Outfit', -apple-system, sans-serif;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;

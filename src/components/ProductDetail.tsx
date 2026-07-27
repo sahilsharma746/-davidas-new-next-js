@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useCallback, useEffect } from 'react';
+import Img from '@/components/Img';
 import type { Product } from '@/data/products';
 
 const DEFAULT_HINT = 'Metal, Karat & Color, and if you have stones or stone choice';
@@ -92,8 +93,7 @@ export default function ProductDetail({
     <>
       <div className="product-detail">
         <div className="product-detail__image">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={p.image} alt={p.name} />
+          <Img src={p.image} alt={p.name} sizes="(max-width: 900px) 90vw, 600px" priority />
           {p.video && (
             <button
               className="product-detail__3d-btn"

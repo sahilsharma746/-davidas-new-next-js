@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Img from '@/components/Img';
 
 // Ported from videos.html + main.js video-modal logic.
 const VIDEOS = [
@@ -61,8 +62,11 @@ export default function VideoLibrary() {
                 onClick={() => open(v.src, v.title)}
               >
                 <div className="video-card__thumb">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={v.thumb} alt={`${v.title} video thumbnail`} loading="lazy" />
+                  <Img
+                    src={v.thumb}
+                    alt={`${v.title} video thumbnail`}
+                    sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 400px"
+                  />
                   <div className="video-card__play" aria-hidden="true"></div>
                 </div>
                 <div className="video-card__body">
