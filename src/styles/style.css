@@ -1406,10 +1406,22 @@ a:hover {
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
+  /* Keep the brand on one line so it fits within the 80px bar and never
+     overflows into the open menu panel (which starts at top: --nav-height). */
+  .nav__logo { white-space: nowrap; }
+  .nav__logo,
+  .nav__logo span { font-size: clamp(0.85rem, 4.2vw, 1.15rem); letter-spacing: 0.04em; }
+
   .nav.nav--open {
     height: 100vh;
     height: 100dvh;
     align-items: flex-start;
+  }
+
+  /* Pin the logo + close button in a clean, solid header row above the menu. */
+  .nav.nav--open .nav__inner {
+    align-items: center;
+    height: var(--nav-height);
   }
 
   .nav__links {
