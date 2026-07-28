@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import '@/styles/gospel.css';
 import GospelNecklace from '@/components/GospelNecklace';
 import JsonLd from '@/components/JsonLd';
 import { SITE, absoluteUrl } from '@/lib/site';
