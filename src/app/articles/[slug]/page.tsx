@@ -32,6 +32,8 @@ export async function generateMetadata(
       description: desc,
       url: path,
       images: [{ url: articleOgImage(a), alt: a.title }],
+      ...(a.date ? { publishedTime: a.date } : {}),
+      authors: [a.author],
     },
   };
 }

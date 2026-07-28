@@ -1125,7 +1125,46 @@ export const PRODUCTS: Product[] = [
     "image": "/images/Novelty/630-107/B.png",
     "video": "https://ijewel.design/embedded?slug=70dd38c&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
     "slug": "vietnam-war-era-army-ring"
-  }
+  },
+  {
+    "style": "210-122",
+    "name": "Rolex-Inspired Diamond Ring",
+    "category": "ladies",
+    "subcategory": "rings",
+    "description": "Ladies' Rolex-Inspired Diamond Ring – 0.75 Carat Total Weight. Make a bold statement with this elegant Rolex-inspired ladies' ring, crafted in polished yellow gold with striking rhodium-plated accents. The distinctive fluted bezel surrounds a brilliant cluster of round-cut diamonds totaling 0.75 carats, creating exceptional sparkle and the illusion of a larger center stone. The wide, sculpted band offers a luxurious, substantial feel, making this ring a perfect choice for everyday sophistication or special occasions. Features: 0.75 carats total weight of round brilliant diamonds. Rolex-inspired fluted bezel design. Two-tone yellow and white gold styling. Wide, comfort-fit band with a bold, contemporary look. A timeless statement piece with exceptional brilliance and elegance.",
+    "metals": "",
+    "sizes": "",
+    "karats": "",
+    "image": "/images/Ladies_Rings/210-122/A.png",
+    "video": "https://ijewel.design/embedded?slug=1faff0d&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
+    "slug": "rolex-inspired-diamond-ring"
+  },
+  {
+    "style": "430-103",
+    "name": "Vintage Scroll Wedding Band",
+    "category": "wedding",
+    "subcategory": "engagement",
+    "description": "Celebrate your love with a wedding band that blends elegance with old-world craftsmanship. This band features intricate scrollwork framed by a milgrain border, creating a sophisticated vintage-inspired design. Its comfortable fit and detailed artistry make it a meaningful symbol of enduring commitment and refined style. Features: Intricate vintage-inspired scroll engraving. Delicate milgrain edge detailing. Comfort-fit interior for everyday wear.",
+    "metals": "",
+    "sizes": "",
+    "karats": "",
+    "image": "/images/Engagement/430-103/A.png",
+    "video": "https://ijewel.design/embedded?slug=cc03f93&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
+    "slug": "vintage-scroll-wedding-band"
+  },
+  {
+    "style": "430-105",
+    "name": "Multi-Row Gemstone Wedding Band",
+    "category": "wedding",
+    "subcategory": "engagement",
+    "description": "This wedding band showcases five rows of brilliant round-cut gemstones. With its bold profile and exceptional brilliance, this ring is a stunning symbol of love and a perfect choice as a wedding band, anniversary ring, or statement piece.",
+    "metals": "",
+    "sizes": "",
+    "karats": "",
+    "image": "/images/Engagement/430-105/A.png",
+    "video": "https://ijewel.design/embedded?slug=d84ed0e&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
+    "slug": "multi-row-gemstone-wedding-band"
+  },
 ];
 
 export const PROCUREMENT_TEXT = "Our website predominately features our own designs and services but we are able to supply any jewelry item, even something you see at other jewelry outlets, usually at very competitive prices.";

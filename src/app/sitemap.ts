@@ -40,13 +40,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Every product
+  // Every product (with image for image sitemap)
   for (const p of PRODUCTS) {
     entries.push({
       url: `${base}${productPath(p)}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.6,
+      images: [`${base}${p.image}`],
     });
   }
 
