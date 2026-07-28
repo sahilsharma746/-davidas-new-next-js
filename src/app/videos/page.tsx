@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import VideoLibrary from '@/components/VideoLibrary';
+import { VIDEOS } from '@/data/videos';
+import JsonLd from '@/components/JsonLd';
+import { videoListJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Video Library — Greensboro, NC',
@@ -18,6 +21,7 @@ export default function VideosPage() {
         </div>
       </header>
       <VideoLibrary />
+      <JsonLd data={videoListJsonLd(VIDEOS)} />
     </>
   );
 }

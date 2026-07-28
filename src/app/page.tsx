@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import Img from '@/components/Img';
+import HomeVideo from '@/components/HomeVideo';
+import JsonLd from '@/components/JsonLd';
+import { webSiteJsonLd } from '@/lib/jsonld';
 import { SITE } from '@/lib/site';
 
 const CARD_SIZES = '(max-width: 600px) 90vw, (max-width: 900px) 45vw, 400px';
@@ -103,8 +106,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Jewelry Repair Video */}
+      <HomeVideo />
+
       {/* Why Davidas */}
-      <section className="section section--alt reveal">
+      <section className="section reveal">
         <div className="container">
           <div className="about-split">
             <div className="about-split__image">
@@ -136,7 +142,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Jewelry Categories */}
-      <section className="section reveal">
+      <section className="section section--alt reveal">
         <div className="container">
           <div className="section__header">
             <span className="section__tag">Browse Collection</span>
@@ -204,7 +210,7 @@ export default function HomePage() {
       </section>
 
       {/* Gem of the Month */}
-      <section className="section section--alt reveal">
+      <section className="section reveal">
         <div className="container">
           <div className="gem-feature">
             <div className="gem-feature__image">
@@ -233,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="section reveal">
+      <section className="section section--alt reveal">
         <div className="container">
           <div className="section__header">
             <span className="section__tag">Visit Us</span>
@@ -270,6 +276,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <JsonLd data={webSiteJsonLd()} />
     </>
   );
 }

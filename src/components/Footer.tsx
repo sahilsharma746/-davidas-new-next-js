@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SITE } from '@/lib/site';
+import { CATEGORIES } from '@/data/products';
 
 // Ported verbatim from the original includes.js footer.
 export default function Footer() {
@@ -24,6 +25,16 @@ export default function Footer() {
               <li><Link href="/jewelry">Jewelry</Link></li>
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/gems-gemology">Gems &amp; Gemology</Link></li>
+            </ul>
+          </div>
+          <div>
+            <div className="footer__heading">Jewelry</div>
+            <ul className="footer__links">
+              {CATEGORIES.map((cat) => (
+                <li key={cat.id}>
+                  <Link href={`/jewelry/${cat.id}`}>{cat.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

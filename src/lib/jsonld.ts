@@ -2,6 +2,18 @@
 import { SITE, absoluteUrl } from './site';
 import type { Product, Category, Subcategory } from '@/data/products';
 
+// WebSite — used on the homepage for Google sitelinks.
+export function webSiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+    publisher: { '@type': 'Organization', name: SITE.name },
+  };
+}
+
 // LocalBusiness / Organization — used site-wide (in the root layout).
 export function localBusinessJsonLd() {
   return {
@@ -90,6 +102,26 @@ export function articleJsonLd(a: {
     datePublished: a.date,
     mainEntityOfPage: absoluteUrl(a.path),
   };
+}
+
+// VideoObject structured data — for the Video Library page.
+export function videoListJsonLd(
+  videos: { src: string; title: string; desc: string; thumb: string }[]
+) {
+  return videos.map((v) => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: v.title,
+    description: v.desc,
+    thumbnailUrl: absoluteUrl(v.thumb),
+    contentUrl: absoluteUrl(v.src),
+    uploadDate: SITE.established,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      logo: { '@type': 'ImageObject', url: absoluteUrl(SITE.ogImage) },
+    },
+  }));
 }
 
 // ItemList for a product grid — helps category/subcategory pages.
