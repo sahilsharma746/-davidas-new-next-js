@@ -52,7 +52,7 @@ export default function HomePage() {
                 Expert restoration and repair for all types of jewelry. We handle everything from
                 simple resizing to complex restorations.
               </p>
-              <Link href="/services" className="service-card__link">Learn more</Link>
+              <Link href="/services" className="service-card__link">Learn more about jewelry repair</Link>
             </article>
             <article className="service-card">
               <span className="service-card__icon">◇</span>
@@ -62,7 +62,7 @@ export default function HomePage() {
                 one-of-a-kind pieces tailored to your style, crafted with exceptional detail and
                 quality.
               </p>
-              <Link href="/services" className="service-card__link">Learn more</Link>
+              <Link href="/services" className="service-card__link">Learn more about custom design</Link>
             </article>
             <article className="service-card">
               <span className="service-card__icon">▣</span>
@@ -71,7 +71,7 @@ export default function HomePage() {
                 Hand-fabricated craftsmanship and state-of-the-art computer-aided design and
                 manufacturing for precision, accuracy, and intricate detail in every piece.
               </p>
-              <Link href="/services" className="service-card__link">Learn more</Link>
+              <Link href="/services" className="service-card__link">Learn more about CAD/CAM</Link>
             </article>
             <article className="service-card">
               <span className="service-card__icon">✎</span>
@@ -81,7 +81,7 @@ export default function HomePage() {
                 available to personalize your jewelry. Add meaning to any piece with custom
                 inscriptions, symbols, dates, or designs that make your jewelry truly your own.
               </p>
-              <Link href="/services" className="service-card__link">Learn more</Link>
+              <Link href="/services" className="service-card__link">Learn more about engraving</Link>
             </article>
             <article className="service-card">
               <span className="service-card__icon">◎</span>
@@ -91,7 +91,7 @@ export default function HomePage() {
                 provide accurate, detailed valuations you can trust, backed by expert examination
                 and industry-standard documentation.
               </p>
-              <Link href="/services" className="service-card__link">Learn more</Link>
+              <Link href="/services" className="service-card__link">Learn more about appraisals</Link>
             </article>
             <article className="service-card">
               <span className="service-card__icon">⌚</span>
@@ -100,7 +100,7 @@ export default function HomePage() {
                 Complete watch and clock repair services — from simple battery replacements to full
                 mechanical overhauls. We keep your timepieces running accurately and reliably.
               </p>
-              <Link href="/services" className="service-card__link">Learn more</Link>
+              <Link href="/services" className="service-card__link">Learn more about watch repair</Link>
             </article>
           </div>
         </div>

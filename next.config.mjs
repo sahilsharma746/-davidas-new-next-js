@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Target modern browsers — eliminates legacy polyfills (~11 KiB savings).
+  experimental: {
+    browsersListForSwc: true,
+    optimizeCss: true,
+  },
   // Ported static prose contains apostrophes/ampersands that trip
   // react/no-unescaped-entities. TypeScript type-checking still runs on build.
   eslint: { ignoreDuringBuilds: true },
