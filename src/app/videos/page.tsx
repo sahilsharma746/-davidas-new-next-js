@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function VideosPage() {
   return (
     <>
-      <header className="category-header reveal">
+      <header className="category-header">
         <div className="container">
           <h1 className="section__title">Video Library</h1>
         </div>

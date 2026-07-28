@@ -60,7 +60,7 @@ const SERVICES: { icon: string; title: string; html: string }[] = [
 export default function ServicesPage() {
   return (
     <>
-      <header className="category-header reveal">
+      <header className="category-header">
         <div className="container">
           <h1 className="section__title">Our Services</h1>
         </div>

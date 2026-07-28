@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <header className="category-header reveal">
+      <header className="category-header">
         <div className="container">
           <h1 className="section__title">Contact Us</h1>
         </div>
