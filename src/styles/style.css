@@ -256,8 +256,6 @@ a:hover {
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-md);
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.4s forwards;
 }
 
 .hero__title em {
