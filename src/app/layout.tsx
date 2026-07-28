@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Outfit } from 'next/font/google';
 import '@/styles/style.css';
-import '@/styles/gospel.css';
-import '@/styles/bookshelf.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import MetaPixel from '@/components/MetaPixel';

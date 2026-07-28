@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import '@/styles/bookshelf.css';
 import Bookshelf from '@/components/Bookshelf';
 import { ARTICLES } from '@/lib/articles';
 
