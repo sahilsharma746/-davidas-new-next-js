@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <header className="category-header reveal">
+      <header className="category-header">
         <div className="container">
           <h1 className="section__title">About Davidas Design Concepts</h1>
         </div>
