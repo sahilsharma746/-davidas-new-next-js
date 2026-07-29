@@ -1165,6 +1165,19 @@ export const PRODUCTS: Product[] = [
     "video": "https://ijewel.design/embedded?slug=d84ed0e&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
     "slug": "multi-row-gemstone-wedding-band"
   },
+  {
+    "style": "430-104",
+    "name": "Radiant Fan-Pattern Wedding Band",
+    "category": "wedding",
+    "subcategory": "engagement",
+    "description": "Celebrate your forever with this striking two-tone wedding band with eye-catching fan-shaped accents. The intricate engraved design blends classic craftsmanship with contemporary style and comfortable enough for everyday wear.",
+    "metals": "",
+    "sizes": "",
+    "karats": "",
+    "image": "/images/Engagement/430-104/A.png",
+    "video": "https://ijewel.design/embedded?slug=b37b2cb&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
+    "slug": "radiant-fan-pattern-wedding-band"
+  }
 ];
 
 export const PROCUREMENT_TEXT = "Our website predominately features our own designs and services but we are able to supply any jewelry item, even something you see at other jewelry outlets, usually at very competitive prices.";
