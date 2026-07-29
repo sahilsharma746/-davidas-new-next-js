@@ -27,7 +27,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: 'Davidas Design Concepts | Custom Jewelry — Greensboro, NC',
+    default: 'Davidas Design Concepts | Premier Jewelry Repair & Custom Jewelry | Greensboro, NC',
     template: '%s | Davidas Design Concepts',
   },
   description: SITE.description,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: SITE.name,
-    title: 'Davidas Design Concepts | Custom Jewelry — Greensboro, NC',
+    title: 'Davidas Design Concepts | Premier Jewelry Repair & Custom Jewelry | Greensboro, NC',
     description: SITE.description,
     url: SITE.url,
     locale: 'en_US',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Davidas Design Concepts | Custom Jewelry — Greensboro, NC',
+    title: 'Davidas Design Concepts | Premier Jewelry Repair & Custom Jewelry | Greensboro, NC',
     description: SITE.description,
     images: [SITE.ogImage],
   },

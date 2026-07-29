@@ -531,7 +531,7 @@ export const PRODUCTS: Product[] = [
     "metals": "",
     "sizes": "",
     "karats": "",
-    "image": "/images/Ladies_Rings/210-110/D.png",
+    "image": "/images/Ladies_Rings/210-110/A.png",
     "video": "https://ijewel.design/embedded?slug=5f78bd9&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
     "slug": "heart-gemstone-ring"
   },
