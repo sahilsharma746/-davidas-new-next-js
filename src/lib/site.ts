@@ -6,7 +6,7 @@ export const SITE = {
   shortName: 'Davidas',
   tagline: 'The fusion of art, craftsmanship and technology.',
   description:
-    'Custom jewelry design in Greensboro, NC. The fusion of art, craftsmanship and technology since 1995.',
+    'The premier jewelry repair and custom jewelry design in Greensboro, NC. Blending art, craftsmanship, and technology since 1995.',
   // Canonical origin — override per-environment with NEXT_PUBLIC_SITE_URL.
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.davidas.com').replace(/\/$/, ''),
   established: '1995-07-08',
