@@ -13,6 +13,21 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  // Staging guard (see NOINDEX in src/lib/site.ts). A header covers responses
+  // that carry no HTML <head> — sitemap.xml, images, JSON — which a meta tag
+  // cannot. Production (the VPS) sets neither var, so no header is emitted.
+  async headers() {
+    const noindex =
+      process.env.NEXT_PUBLIC_NOINDEX === '1' ||
+      (!!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production');
+    if (!noindex) return [];
+    return [
+      {
+        source: '/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Legacy hash-based product routes can't be redirected server-side (the

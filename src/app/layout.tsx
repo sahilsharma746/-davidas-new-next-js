@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import MetaPixel from '@/components/MetaPixel';
 import ScrollReveal from '@/components/ScrollReveal';
 import JsonLd from '@/components/JsonLd';
-import { SITE } from '@/lib/site';
+import { SITE, NOINDEX } from '@/lib/site';
 import { localBusinessJsonLd } from '@/lib/jsonld';
 
 // Self-hosted fonts (no render-blocking external request; font-display: swap).
@@ -51,11 +51,20 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [SITE.ogImage],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
-  },
+  // Staging deployments emit `noindex, nofollow` on every page. robots.txt alone
+  // is not enough — a disallowed URL can still be indexed from inbound links;
+  // only the meta/header directive keeps it out of the index.
+  robots: NOINDEX
+    ? {
+        index: false,
+        follow: false,
+        googleBot: { index: false, follow: false },
+      }
+    : {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+      },
   category: 'jewelry',
   icons: {
     icon: [

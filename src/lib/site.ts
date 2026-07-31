@@ -28,6 +28,17 @@ export const SITE = {
   ogImage: '/images/Cross Pendants/113-334/A.png',
 } as const;
 
+// Staging/preview guard. When true the deployment must never be indexed:
+// robots.txt disallows everything, every page emits `noindex, nofollow`, and
+// an X-Robots-Tag header is set (see next.config.mjs).
+//   - NEXT_PUBLIC_NOINDEX=1 → explicit opt-in (set this on the Vercel project,
+//     which serves davidas-com.vercel.app as its "production" deployment).
+//   - Any non-production Vercel env (preview/development) is covered too.
+// The VPS that serves www.davidas.com sets neither, so it stays indexable.
+export const NOINDEX =
+  process.env.NEXT_PUBLIC_NOINDEX === '1' ||
+  (!!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production');
+
 export const NAV_LINKS: { href: string; label: string }[] = [
   { href: '/', label: 'Home' },
   { href: '/jewelry', label: 'Jewelry' },

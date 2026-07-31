@@ -26,6 +26,9 @@ yarn-error.log*
 .env.local
 .env*.local
 
+# local-only notes: SSH credentials for the VPS, ops runbook (.claude/server-access.md)
+.claude/
+
 # vercel
 .vercel
 

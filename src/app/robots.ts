@@ -1,8 +1,12 @@
 import type { MetadataRoute } from 'next';
-import { SITE } from '@/lib/site';
+import { SITE, NOINDEX } from '@/lib/site';
 
 // Generates /robots.txt and points crawlers to the sitemap.
 export default function robots(): MetadataRoute.Robots {
+  // Staging (Vercel) — block everything and advertise no sitemap.
+  if (NOINDEX) {
+    return { rules: { userAgent: '*', disallow: '/' } };
+  }
   return {
     rules: {
       userAgent: '*',
