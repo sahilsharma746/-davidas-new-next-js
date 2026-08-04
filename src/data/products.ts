@@ -971,6 +971,19 @@ export const PRODUCTS: Product[] = [
     "slug": "melancholy-man-pendant"
   },
   {
+    "style": "650-102",
+    "name": "Golf Shoe Pendant",
+    "category": "gents",
+    "subcategory": "pendants",
+    "description": "Celebrate a love of golf with this beautifully crafted golf shoe pendant. Featuring realistic detailing, from the classic saddle design to the decorative kiltie fringe and laces, this polished charm captures the timeless style of traditional golf footwear. Perfect for golfers, collectors, or anyone who enjoys the game, it makes a distinctive addition to a bracelet, necklace, or keychain and is a thoughtful gift for any golf enthusiast.",
+    "metals": "",
+    "sizes": "",
+    "karats": "",
+    "image": "/images/Gents_Pendants/650-102/101.png",
+    "video": "https://ijewel.design/embedded?slug=f75e7bd&isAutoplay=true&isResetView=false&isPlayCameraViews=false&isPlayAnimations=false",
+    "slug": "golf-shoe-pendant"
+  },
+  {
     "style": "610-101",
     "name": "Truck Driving Ring — Oval Signet",
     "category": "specialty",

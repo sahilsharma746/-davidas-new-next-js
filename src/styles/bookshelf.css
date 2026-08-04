@@ -454,6 +454,85 @@
   }
 }
 
+/* ---------- Mantel Clock ---------- */
+.decor-clock {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.mantel-clock {
+  width: min(140px, 28vw);
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.mantel-clock__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.clock-face {
+  position: absolute;
+  top: 27.4%;
+  left: 50%;
+  width: 36%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.clock-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(0deg);
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.clock-hand--hour {
+  width: 4.5%;
+  height: 27%;
+  background: #4a2c18;
+}
+
+.clock-hand--minute {
+  width: 3%;
+  height: 38%;
+  background: #382114;
+}
+
+.clock-hand--second {
+  width: 1.4%;
+  height: 42%;
+  background: #9d2b20;
+  z-index: 3;
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 2px solid #8a581e;
+  border-radius: 50%;
+  background: #d7a94e;
+  z-index: 4;
+}
+
+@media (max-width: 640px) {
+  .mantel-clock {
+    width: min(100px, 22vw);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .gem-glint, .sparkle {
     animation: none;

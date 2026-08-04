@@ -1,7 +1,112 @@
-// AUTO-GENERATED decorative bookcase SVGs, extracted verbatim from
-// gems-gemology.html (#decorShelves). Injected as raw HTML to preserve the SVG exactly.
-const DECOR_HTML = "<!-- Curio shelf: stacked volumes · gem under cloche · jeweler's loupe -->\n          <div class=\"shelf shelf--decor\">\n            <div class=\"decor decor-stack\">\n              <svg viewBox=\"0 0 150 70\" width=\"152\">\n                <rect x=\"12\" y=\"48\" width=\"126\" height=\"17\" rx=\"3\" fill=\"#233045\"/>\n                <rect x=\"130\" y=\"50\" width=\"8\" height=\"13\" rx=\"2\" fill=\"#e8dfc8\"/>\n                <rect x=\"12\" y=\"54\" width=\"126\" height=\"2\" fill=\"rgba(201,164,92,0.55)\"/>\n                <rect x=\"20\" y=\"31\" width=\"114\" height=\"17\" rx=\"3\" fill=\"#4a1f1a\"/>\n                <rect x=\"126\" y=\"33\" width=\"8\" height=\"13\" rx=\"2\" fill=\"#e8dfc8\"/>\n                <rect x=\"20\" y=\"37\" width=\"114\" height=\"2\" fill=\"rgba(201,164,92,0.55)\"/>\n                <rect x=\"16\" y=\"14\" width=\"106\" height=\"17\" rx=\"3\" fill=\"#1f3a2a\"/>\n                <rect x=\"114\" y=\"16\" width=\"8\" height=\"13\" rx=\"2\" fill=\"#e8dfc8\"/>\n                <rect x=\"16\" y=\"20\" width=\"106\" height=\"2\" fill=\"rgba(201,164,92,0.55)\"/>\n              </svg>\n            </div>\n            <div class=\"decor decor-cloche\" style=\"display:flex;align-items:flex-end;justify-content:center\">\n              <img src=\"/images/Gem_Profile_Pictures/Bambi.png\" alt=\"Bambi\" style=\"width:140px;height:auto;border-radius:8px;object-fit:contain\" />\n            </div>\n            <div class=\"decor decor-loupe\">\n              <svg viewBox=\"0 0 130 62\" width=\"122\">\n                <ellipse cx=\"65\" cy=\"57\" rx=\"52\" ry=\"4\" fill=\"rgba(0,0,0,0.4)\"/>\n                <rect x=\"60\" y=\"27\" width=\"62\" height=\"13\" rx=\"6\" fill=\"#3f2817\"/>\n                <rect x=\"60\" y=\"29\" width=\"62\" height=\"4\" rx=\"2\" fill=\"#6b4527\"/>\n                <rect x=\"55\" y=\"24\" width=\"12\" height=\"19\" rx=\"3\" fill=\"#c9a45c\"/>\n                <circle cx=\"34\" cy=\"33\" r=\"22\" fill=\"rgba(200,230,220,0.10)\" stroke=\"#c9a45c\" stroke-width=\"6\"/>\n                <circle cx=\"34\" cy=\"33\" r=\"15\" fill=\"none\" stroke=\"rgba(255,255,255,0.14)\" stroke-width=\"2\"/>\n                <path d=\"M24,24 C27,19 34,17 39,19\" fill=\"none\" stroke=\"rgba(255,255,255,0.35)\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n              </svg>\n            </div>\n          </div>\n          <div class=\"shelf-board\"></div>\n\n          <!-- Bottom shelf: potted ivy · est. plaque · ring box -->\n          <div class=\"shelf shelf--decor\">\n            <div class=\"decor decor-plant\">\n              <svg viewBox=\"0 0 160 150\" width=\"150\">\n                <ellipse cx=\"70\" cy=\"144\" rx=\"42\" ry=\"6\" fill=\"rgba(0,0,0,0.45)\"/>\n                <path d=\"M70,96 C50,84 34,58 40,34 C58,46 68,70 70,96\" fill=\"#2f6b34\"/>\n                <path d=\"M70,96 C72,66 82,44 102,32 C104,58 92,84 72,96\" fill=\"#3f8a42\"/>\n                <path d=\"M70,98 C60,80 58,60 66,44 C76,58 78,80 72,98\" fill=\"#57a85c\"/>\n                <path d=\"M96,100 C122,108 132,124 128,142\" fill=\"none\" stroke=\"#2f6b34\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n                <ellipse cx=\"112\" cy=\"107\" rx=\"7\" ry=\"4.5\" fill=\"#3f8a42\" transform=\"rotate(24 112 107)\"/>\n                <ellipse cx=\"126\" cy=\"121\" rx=\"7\" ry=\"4.5\" fill=\"#57a85c\" transform=\"rotate(48 126 121)\"/>\n                <ellipse cx=\"130\" cy=\"137\" rx=\"6.5\" ry=\"4\" fill=\"#2f6b34\" transform=\"rotate(78 130 137)\"/>\n                <rect x=\"34\" y=\"92\" width=\"72\" height=\"13\" rx=\"4\" fill=\"#b96b44\"/>\n                <polygon points=\"40,105 100,105 90,146 50,146\" fill=\"#a9603c\"/>\n                <polygon points=\"40,105 70,105 66,146 50,146\" fill=\"rgba(0,0,0,0.14)\"/>\n                <ellipse cx=\"70\" cy=\"97\" rx=\"30\" ry=\"4\" fill=\"#2b1a10\"/>\n              </svg>\n            </div>\n            <div class=\"decor decor-plaque\">\n              <svg viewBox=\"0 0 160 48\" width=\"150\">\n                <ellipse cx=\"80\" cy=\"45\" rx=\"66\" ry=\"3.5\" fill=\"rgba(0,0,0,0.4)\"/>\n                <rect x=\"6\" y=\"4\" width=\"148\" height=\"36\" rx=\"7\" fill=\"#a9884e\"/>\n                <rect x=\"6\" y=\"4\" width=\"148\" height=\"16\" rx=\"7\" fill=\"#caa55d\"/>\n                <rect x=\"12\" y=\"9\" width=\"136\" height=\"26\" rx=\"4\" fill=\"none\" stroke=\"rgba(58,44,18,0.55)\" stroke-width=\"1.5\"/>\n                <text x=\"80\" y=\"27\" text-anchor=\"middle\" font-family=\"Cormorant Garamond, serif\" font-size=\"12\" font-weight=\"600\" letter-spacing=\"1.5\" fill=\"#3a2c12\">EST. JULY 8, 1995</text>\n              </svg>\n            </div>\n            <div class=\"decor decor-ringbox\">\n              <svg viewBox=\"0 0 120 112\" width=\"108\">\n                <ellipse cx=\"60\" cy=\"107\" rx=\"44\" ry=\"5\" fill=\"rgba(0,0,0,0.45)\"/>\n                <rect x=\"24\" y=\"8\" width=\"72\" height=\"38\" rx=\"9\" fill=\"#2c1830\"/>\n                <rect x=\"30\" y=\"14\" width=\"60\" height=\"26\" rx=\"6\" fill=\"#4a2b45\"/>\n                <circle cx=\"60\" cy=\"62\" r=\"15\" fill=\"none\" stroke=\"#d8b46a\" stroke-width=\"5\"/>\n                <polygon points=\"60,42 68,50 60,58 52,50\" fill=\"#eaf7ff\"/>\n                <polygon points=\"60,42 68,50 60,54 52,50\" fill=\"#c9e6f5\"/>\n                <rect x=\"22\" y=\"60\" width=\"76\" height=\"42\" rx=\"9\" fill=\"#3c2338\"/>\n                <rect x=\"28\" y=\"66\" width=\"64\" height=\"20\" rx=\"6\" fill=\"#5a3653\"/>\n                <line x1=\"44\" y1=\"76\" x2=\"76\" y2=\"76\" stroke=\"#2c1830\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n              </svg>\n            </div>\n          </div>\n          <div class=\"shelf-board\"></div>";
+'use client';
+
+import { useEffect, useRef } from 'react';
 
 export default function BookshelfDecor() {
-  return <div id="decorShelves" aria-hidden="true" dangerouslySetInnerHTML={{ __html: DECOR_HTML }} />;
+  const clockRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const clock = clockRef.current;
+    if (!clock) return;
+
+    const hourHand = clock.querySelector<HTMLElement>('.clock-hand--hour');
+    const minuteHand = clock.querySelector<HTMLElement>('.clock-hand--minute');
+    const secondHand = clock.querySelector<HTMLElement>('.clock-hand--second');
+
+    let raf: number;
+
+    function updateClock() {
+      const now = new Date();
+      const ms = now.getMilliseconds();
+      const seconds = now.getSeconds() + ms / 1000;
+      const minutes = now.getMinutes() + seconds / 60;
+      const hours = (now.getHours() % 12) + minutes / 60;
+
+      if (hourHand)
+        hourHand.style.transform = `translateX(-50%) rotate(${hours * 30}deg)`;
+      if (minuteHand)
+        minuteHand.style.transform = `translateX(-50%) rotate(${minutes * 6}deg)`;
+      if (secondHand)
+        secondHand.style.transform = `translateX(-50%) rotate(${seconds * 6}deg)`;
+
+      raf = requestAnimationFrame(updateClock);
+    }
+
+    updateClock();
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <div id="decorShelves" aria-hidden="true">
+      {/* Top shelf: stacked volumes · Bambi · mantel clock */}
+      <div className="shelf shelf--decor">
+        <div className="decor decor-stack">
+          <svg viewBox="0 0 150 70" width="152">
+            <rect x="12" y="48" width="126" height="17" rx="3" fill="#233045" />
+            <rect x="130" y="50" width="8" height="13" rx="2" fill="#e8dfc8" />
+            <rect x="12" y="54" width="126" height="2" fill="rgba(201,164,92,0.55)" />
+            <rect x="20" y="31" width="114" height="17" rx="3" fill="#4a1f1a" />
+            <rect x="126" y="33" width="8" height="13" rx="2" fill="#e8dfc8" />
+            <rect x="20" y="37" width="114" height="2" fill="rgba(201,164,92,0.55)" />
+            <rect x="16" y="14" width="106" height="17" rx="3" fill="#1f3a2a" />
+            <rect x="114" y="16" width="8" height="13" rx="2" fill="#e8dfc8" />
+            <rect x="16" y="20" width="106" height="2" fill="rgba(201,164,92,0.55)" />
+          </svg>
+        </div>
+
+        <div
+          className="decor decor-cloche"
+          style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}
+        >
+          <img
+            src="/images/Gem_Profile_Pictures/Bambi.png"
+            alt="Bambi"
+            style={{ width: 140, height: 'auto', borderRadius: 8, objectFit: 'contain' }}
+          />
+        </div>
+
+        {/* Mantel clock with live hands */}
+        <div className="decor decor-clock" ref={clockRef}>
+          <div className="mantel-clock" aria-label="Current local time">
+            <img
+              src="/images/Gem_Profile_Pictures/Clock.png"
+              alt="Mantel clock"
+              className="mantel-clock__image"
+            />
+            <div className="clock-face">
+              <div className="clock-hand clock-hand--hour" />
+              <div className="clock-hand clock-hand--minute" />
+              <div className="clock-hand clock-hand--second" />
+              <div className="clock-center" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="shelf-board" />
+
+      {/* Bottom shelf: vase · est. plaque */}
+      <div className="shelf shelf--decor">
+        <div className="decor decor-vase" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+          <img
+            src="/images/Gem_Profile_Pictures/Vase-3.png"
+            alt="Decorative vase"
+            style={{ width: 100, height: 'auto', objectFit: 'contain' }}
+          />
+        </div>
+
+        <div className="decor decor-plaque">
+          <svg viewBox="0 0 160 48" width="150">
+            <ellipse cx="80" cy="45" rx="66" ry="3.5" fill="rgba(0,0,0,0.4)" />
+            <rect x="6" y="4" width="148" height="36" rx="7" fill="#a9884e" />
+            <rect x="6" y="4" width="148" height="16" rx="7" fill="#caa55d" />
+            <rect x="12" y="9" width="136" height="26" rx="4" fill="none" stroke="rgba(58,44,18,0.55)" strokeWidth="1.5" />
+            <text x="80" y="27" textAnchor="middle" fontFamily="Cormorant Garamond, serif" fontSize="12" fontWeight="600" letterSpacing="1.5" fill="#3a2c12">
+              EST. JULY 8, 1995
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div className="shelf-board" />
+    </div>
+  );
 }
