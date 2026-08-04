@@ -54,16 +54,24 @@
   color: var(--color-accent);
 }
 
+.article-page__content {
+  overflow: hidden;
+}
+
 .article-page__image {
-  max-width: 400px;
-  margin-bottom: var(--space-md);
+  float: left;
+  max-width: 380px;
+  margin: 0.25rem var(--space-md) var(--space-sm) 0;
   border: 1px solid var(--color-border);
+  border-radius: 4px;
+  shape-outside: margin-box;
 }
 
 .article-page__image img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 4px;
 }
 
 .article-page__body {
@@ -71,6 +79,14 @@
   color: var(--color-text-muted);
   font-size: 1.02rem;
   line-height: 1.85;
+}
+
+@media (max-width: 640px) {
+  .article-page__image {
+    float: none;
+    max-width: 200px;
+    margin: 0 auto var(--space-md);
+  }
 }
 
 .article-page__body p {
