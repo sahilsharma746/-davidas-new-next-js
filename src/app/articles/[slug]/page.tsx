@@ -59,16 +59,18 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
           {a.date ? ` — ${a.date}` : ''}
         </div>
 
-        {a.image && (
-          <div className="article-page__image">
-            <Img src={a.image} alt={a.title} sizes="(max-width: 600px) 90vw, 400px" priority />
-          </div>
-        )}
+        <div className="article-page__content">
+          {a.image && (
+            <div className="article-page__image">
+              <Img src={a.image} alt={a.title} sizes="(max-width: 600px) 200px, 380px" priority />
+            </div>
+          )}
 
-        <div
-          className="article-page__body"
-          dangerouslySetInnerHTML={{ __html: a.content }}
-        />
+          <div
+            className="article-page__body"
+            dangerouslySetInnerHTML={{ __html: a.content }}
+          />
+        </div>
 
         <div className="article-page__footer">
           <Link href="/gems-gemology" className="btn btn--outline">
