@@ -3,9 +3,9 @@
   --gold: #c9a45c;
   --gold-soft: #a98c4e;
   --ivory: #f1e9d8;
-  --wood-dark: #2b1a10;
-  --wood-mid: #4a2f1b;
-  --wood-light: #6b4527;
+  --wood-dark: #4a3222;
+  --wood-mid: #6b4c33;
+  --wood-light: #8c6740;
   --pane: #f7f2e6;
   --ink: #241d14;
 }
@@ -99,7 +99,7 @@
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0) 100%),
-    linear-gradient(180deg, #160d07, #241610);
+    linear-gradient(180deg, #2e1f14, #3a2818);
 }
 .shelf-board {
   height: 16px;
@@ -342,7 +342,7 @@
   background:
     radial-gradient(120% 95% at 50% 0%, rgba(255, 206, 130, 0.10), transparent 58%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0) 100%),
-    linear-gradient(180deg, #160d07, #241610);
+    linear-gradient(180deg, #2e1f14, #3a2818);
 }
 .decor {
   line-height: 0;
@@ -353,7 +353,7 @@
   background:
     radial-gradient(120% 95% at 50% 0%, rgba(255, 206, 130, 0.08), transparent 58%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0) 100%),
-    linear-gradient(180deg, #160d07, #241610);
+    linear-gradient(180deg, #2e1f14, #3a2818);
 }
 /* Cabinet feet */
 .case-frame {
