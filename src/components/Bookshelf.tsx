@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import BookshelfDecor from './BookshelfDecor';
 import type { Article } from '@/lib/articles';
 
@@ -12,7 +12,6 @@ const LEATHER = [
 ];
 const HEIGHTS = [175, 168, 160, 172, 165, 178, 162, 170, 174, 166];
 const WIDTHS = [52, 46, 42, 50, 44, 48, 54, 40, 56, 45];
-const BOOKS_PER_ROW = 13;
 
 function toRoman(num: number): string {
   const lookup: [number, string][] = [
@@ -37,10 +36,23 @@ function bookWidth(title: string, baseWidth: number): number {
   return baseWidth;
 }
 
+function useBooksPerRow() {
+  const [perRow, setPerRow] = useState(13);
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 640px)');
+    const update = () => setPerRow(mql.matches ? 7 : 13);
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
+  return perRow;
+}
+
 export default function Bookshelf({ articles }: { articles: Article[] }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const paneRef = useRef<HTMLElement>(null);
   const bookRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const booksPerRow = useBooksPerRow();
 
   const selected = articles.find((a) => a.id === selectedId) || null;
 
@@ -62,10 +74,9 @@ export default function Bookshelf({ articles }: { articles: Article[] }) {
     }
   }
 
-  // Split into rows of 13.
   const rows: Article[][] = [];
-  for (let i = 0; i < articles.length; i += BOOKS_PER_ROW) {
-    rows.push(articles.slice(i, i + BOOKS_PER_ROW));
+  for (let i = 0; i < articles.length; i += booksPerRow) {
+    rows.push(articles.slice(i, i + booksPerRow));
   }
 
   return (
@@ -90,12 +101,12 @@ export default function Bookshelf({ articles }: { articles: Article[] }) {
 
           {rows.map((row, rowIdx) => {
             const isLastRow = rowIdx === rows.length - 1;
-            const needsBookend = isLastRow || row.length < BOOKS_PER_ROW;
+            const needsBookend = isLastRow || row.length < booksPerRow;
             return (
               <div key={rowIdx}>
                 <div className="shelf" role="list">
                   {row.map((article, j) => {
-                    const index = rowIdx * BOOKS_PER_ROW + j;
+                    const index = rowIdx * booksPerRow + j;
                     const leather = LEATHER[index % LEATHER.length];
                     const height = HEIGHTS[index % HEIGHTS.length];
                     const width = bookWidth(article.title, WIDTHS[index % WIDTHS.length]);
