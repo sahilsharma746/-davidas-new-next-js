@@ -15,6 +15,7 @@ function formatPrice(price: number): string {
 
 const VELVET_DARK = '/images/showcase/velvet.jpg';
 const VELVET_GREEN = '/images/showcase/green-velvet.png';
+const CUSHION_IMG = '/images/showcase/cushion.png';
 
 /* ───── Hero ───── */
 function ShowcaseHero({ velvet }: { velvet: string }) {
@@ -118,7 +119,12 @@ function ShowcaseProduct({
             className="sc-comp__img"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
-          <span className="sc-comp__shadow" />
+          <img
+            src={CUSHION_IMG}
+            alt=""
+            aria-hidden="true"
+            className="sc-comp__cushion"
+          />
         </div>
         <span className="sc-comp__info">
           <span className="sc-comp__name">{item.name}</span>
@@ -268,45 +274,66 @@ function CaseNav({
   );
 }
 
-/* ───── Product Gallery (inside modal) ───── */
-const GALLERY_PLACEHOLDERS = [
-  '/images/showcase/ring-6.png',
-  '/images/showcase/ring-7.png',
-  '/images/showcase/ring-8.png',
-  '/images/showcase/model.jpg',
-  '/images/showcase/bench.jpg',
-];
+/* ───── Product Gallery with "From Sketch to Showcase" tabs ───── */
+type CreationTab = 'finished' | 'sketch' | 'bench';
+
+const SKETCH_PLACEHOLDER = '/images/showcase/hero.jpg';
+const BENCH_PLACEHOLDER = '/images/showcase/bench.jpg';
 
 function ProductGallery({ item, velvet }: { item: ShowcaseItem; velvet: string }) {
-  const [index, setIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<CreationTab>('finished');
+  const [thumbIndex, setThumbIndex] = useState(0);
 
-  const thumbImages = [
-    item.image,
-    ...GALLERY_PLACEHOLDERS,
-  ];
+  const finishedImages = [item.image];
+  const sketchImg = item.sketchImage || SKETCH_PLACEHOLDER;
+  const benchImg = item.benchImage || BENCH_PLACEHOLDER;
 
   useEffect(() => {
-    setIndex(0);
+    setActiveTab('finished');
+    setThumbIndex(0);
   }, [item.slug]);
+
+  const displayImage = activeTab === 'sketch'
+    ? sketchImg
+    : activeTab === 'bench'
+      ? benchImg
+      : finishedImages[thumbIndex];
 
   return (
     <div className="sc-gallery">
-      <div className="sc-gallery__thumbs">
-        {thumbImages.map((src, i) => (
+      {/* Creation story tabs */}
+      <div className="sc-creation-tabs">
+        <span className="sc-creation-tabs__brand">From Sketch to Showcase</span>
+        <div className="sc-creation-tabs__row">
           <button
-            key={i}
-            className={`sc-gallery__thumb${i === index ? ' active' : ''}`}
-            onClick={() => setIndex(i)}
-            aria-label={`View ${i + 1}`}
+            className={`sc-creation-tab${activeTab === 'sketch' ? ' active' : ''}`}
+            onClick={() => setActiveTab('sketch')}
           >
-            <Img
-              src={src}
-              alt=""
-              className="sc-gallery__thumb-img"
-              sizes="64px"
-            />
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.2">
+              <path d="M14.5 2.5l3 3-10 10H4.5v-3l10-10z" />
+            </svg>
+            Sketch
           </button>
-        ))}
+          <button
+            className={`sc-creation-tab${activeTab === 'bench' ? ' active' : ''}`}
+            onClick={() => setActiveTab('bench')}
+          >
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.2">
+              <circle cx="10" cy="10" r="3" />
+              <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" />
+            </svg>
+            At the Bench
+          </button>
+          <button
+            className={`sc-creation-tab${activeTab === 'finished' ? ' active' : ''}`}
+            onClick={() => setActiveTab('finished')}
+          >
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.2">
+              <path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3-4.9-2.6-4.9 2.6.9-5.3-4-3.9 5.5-.8z" />
+            </svg>
+            Finished Piece
+          </button>
+        </div>
       </div>
 
       <div className="sc-gallery__frame">
@@ -318,22 +345,51 @@ function ProductGallery({ item, velvet }: { item: ShowcaseItem; velvet: string }
             className="sc-gallery__velvet"
           />
           <Img
-            src={thumbImages[index]}
-            alt={item.name}
+            src={displayImage}
+            alt={activeTab === 'sketch' ? `${item.name} original sketch` : activeTab === 'bench' ? `${item.name} at the jeweler's bench` : item.name}
             className="sc-gallery__img"
             sizes="(max-width: 640px) 100vw, 500px"
           />
           <div className="sc-gallery__glass" />
 
+          {activeTab === 'sketch' && (
+            <span className="sc-gallery__tab-label">Original Design</span>
+          )}
+          {activeTab === 'bench' && (
+            <span className="sc-gallery__tab-label">Craftsmanship</span>
+          )}
         </div>
+      </div>
+
+      {/* Thumbnail grid */}
+      <div className="sc-gallery__thumbs">
+        {[
+          { src: item.image, label: 'Front', tab: 'finished' as CreationTab },
+          { src: sketchImg, label: 'Sketch', tab: 'sketch' as CreationTab },
+          { src: benchImg, label: 'Bench', tab: 'bench' as CreationTab },
+          { src: item.image, label: 'Close-up', tab: 'finished' as CreationTab },
+        ].map((t, i) => (
+          <button
+            key={i}
+            className={`sc-gallery__thumb${activeTab === t.tab && (t.tab !== 'finished' || i === 0) ? ' active' : ''}`}
+            onClick={() => setActiveTab(t.tab)}
+          >
+            <img src={t.src} alt={t.label} className="sc-gallery__thumb-img" />
+            <span className="sc-gallery__thumb-label">{t.label}</span>
+          </button>
+        ))}
       </div>
     </div>
   );
 }
 
-/* ───── Video Modal ───── */
-function VideoModal({ onClose }: { onClose: () => void }) {
+/* ───── Video Modal with seamless transition ───── */
+function VideoModal({ item, onClose }: { item: ShowcaseItem; onClose: () => void }) {
+  const [ended, setEnded] = useState(false);
+  const videoSrc = item.creationVideo || '/video-files/Jewelry-Repair-Ad.mp4';
+
   useEffect(() => {
+    setEnded(false);
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -347,13 +403,38 @@ function VideoModal({ onClose }: { onClose: () => void }) {
         <button className="sc-video-modal__close" onClick={onClose} aria-label="Close video">
           &times;
         </button>
+
+        {!ended && (
+          <p className="sc-video-modal__title">The Creation of {item.name}</p>
+        )}
+
         <div className="sc-video-modal__inner">
-          <video
-            src="/video-files/Jewelry-Repair-Ad.mp4"
-            controls
-            autoPlay
-            playsInline
-          />
+          {ended ? (
+            <div className="sc-video-modal__reveal">
+              <Img
+                src={item.image}
+                alt={item.name}
+                className="sc-video-modal__reveal-img"
+                sizes="(max-width: 800px) 100vw, 700px"
+              />
+              <div className="sc-video-modal__reveal-info">
+                <h3 className="sc-video-modal__reveal-name">{item.name}</h3>
+                <p className="sc-video-modal__reveal-tag">Designed. Crafted. Finished by Hand.</p>
+                <p className="sc-video-modal__reveal-price">{formatPrice(item.price)}</p>
+                <button className="sc-video-modal__reveal-btn" onClick={onClose}>
+                  Return to Case
+                </button>
+              </div>
+            </div>
+          ) : (
+            <video
+              src={videoSrc}
+              controls
+              autoPlay
+              playsInline
+              onEnded={() => setEnded(true)}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -445,18 +526,16 @@ function ProductModal({
           <div className="sc-modal__left">
             <ProductGallery item={item} velvet={velvet} />
 
-            <div className="sc-video-cta">
-              <p className="sc-video-cta__eyebrow">See how this piece was created</p>
-              <p className="sc-video-cta__text">
-                Watch the 30-second journey from sketch to finished jewelry — design,
-                CAD, the bench, the polish, the reveal.
-              </p>
-              <button className="sc-video-cta__btn" onClick={onPlayVideo}>
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-                  <path d="M5 2 L13 8 L5 14 Z" />
-                </svg>
-                Play Video
-              </button>
+            {/* Product dots indicator */}
+            <div className="sc-modal__product-dots">
+              {items.map((p) => (
+                <button
+                  key={p.slug}
+                  className={`sc-modal__product-dot${p.slug === item.slug ? ' active' : ''}`}
+                  onClick={() => onNavigate(p)}
+                  aria-label={p.name}
+                />
+              ))}
             </div>
           </div>
 
@@ -502,16 +581,18 @@ function ProductModal({
               </button>
             </div>
 
-            {/* Product dots indicator */}
-            <div className="sc-modal__product-dots">
-              {items.map((p, i) => (
-                <button
-                  key={p.slug}
-                  className={`sc-modal__product-dot${p.slug === item.slug ? ' active' : ''}`}
-                  onClick={() => onNavigate(p)}
-                  aria-label={p.name}
-                />
-              ))}
+            <div className="sc-video-cta">
+              <p className="sc-video-cta__eyebrow">See how this piece was created</p>
+              <p className="sc-video-cta__text">
+                Watch the 30-second journey from sketch to finished jewelry — design, CAD,
+                the bench, the polish, the reveal.
+              </p>
+              <button className="sc-video-cta__btn" onClick={onPlayVideo}>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                  <path d="M5 2 L13 8 L5 14 Z" />
+                </svg>
+                Play video
+              </button>
             </div>
 
           </div>
@@ -649,7 +730,7 @@ export default function ShowcaseCollection() {
           onToggleFavorite={toggleFavorite}
         />
       )}
-      {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
+      {videoOpen && selectedItem && <VideoModal item={selectedItem} onClose={() => setVideoOpen(false)} />}
     </>
   );
 }
