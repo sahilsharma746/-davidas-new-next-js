@@ -89,17 +89,19 @@ function CollectionNav({
 /* ───── Product Compartment ───── */
 function ShowcaseProduct({
   item,
+  index = 0,
   onSelect,
   isFavorite,
   onToggleFavorite,
 }: {
   item: ShowcaseItem;
+  index?: number;
   onSelect: (item: ShowcaseItem) => void;
   isFavorite: boolean;
   onToggleFavorite: (slug: string) => void;
 }) {
   return (
-    <div className="sc-comp">
+    <div className="sc-comp" style={{ '--item-index': index } as React.CSSProperties}>
       <button
         className={`sc-comp__fav${isFavorite ? ' active' : ''}`}
         onClick={(e) => { e.stopPropagation(); onToggleFavorite(item.slug); }}
@@ -180,10 +182,11 @@ function DisplayCase({
               <div className="sc-case__vignette" />
 
               <div className="sc-case__grid">
-                {caseItems.map((item) => (
+                {caseItems.map((item, idx) => (
                   <ShowcaseProduct
                     key={item.slug}
                     item={item}
+                    index={idx}
                     onSelect={onSelectItem}
                     isFavorite={favorites.includes(item.slug)}
                     onToggleFavorite={onToggleFavorite}

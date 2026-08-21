@@ -686,10 +686,7 @@
   transition: all 0.4s ease;
 }
 
-.sc-comp__btn:hover .sc-comp__img {
-  transform: scale(1.03);
-  filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 26px rgba(201, 151, 50, 0.35)) brightness(1.1);
-}
+/* hover transform handled in Luxury Effects section below */
 
 /* Hover to reveal name/price */
 .sc-comp__info {
@@ -1908,10 +1905,14 @@
   }
 }
 
-/* ───── Luxury Ambient Effects ───── */
+/* ═══════════════════════════════════════════════════ */
+/* ───── LUXURY EFFECTS SYSTEM ───── */
+/* ═══════════════════════════════════════════════════ */
+
+/* ── 1. Ambient Case Glow — soft golden spotlight in the case interior ── */
 @keyframes sc-ambient-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
 }
 
 .sc-case__interior::after {
@@ -1920,26 +1921,209 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 50% 40% at 50% 30%, rgba(201, 151, 50, 0.06) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse 45% 35% at 50% 25%, rgba(201, 151, 50, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 50% at 20% 60%, rgba(201, 151, 50, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 50% at 80% 60%, rgba(201, 151, 50, 0.04) 0%, transparent 60%);
   animation: sc-ambient-glow 6s ease-in-out infinite;
 }
 
+/* ── 2. Moving Glass Reflection — slow light sweep across the case ── */
+@keyframes sc-glass-sweep {
+  0% { transform: translateX(-120%) skewX(-15deg); }
+  100% { transform: translateX(220%) skewX(-15deg); }
+}
+
+.sc-case__glass::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  width: 30%;
+  z-index: 31;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.03) 80%,
+    transparent
+  );
+  animation: sc-glass-sweep 12s ease-in-out infinite;
+}
+
+/* ── 3. Per-Item Spotlight — golden glow behind each jewelry piece ── */
+.sc-comp__image::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 50%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(201, 151, 50, 0.08) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.sc-comp:hover .sc-comp__image::before {
+  opacity: 1;
+}
+
+/* ── 4. Shimmer Sweep on Hover — light catches the glass over each piece ── */
 @keyframes sc-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+
+.sc-comp::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  z-index: 26;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.04) 40%,
+    rgba(255, 255, 255, 0.10) 50%,
+    rgba(255, 255, 255, 0.04) 60%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .sc-comp:hover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 26;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.06) 55%, transparent 60%);
-  animation: sc-shimmer 1.2s ease forwards;
+  opacity: 1;
+  animation: sc-shimmer 0.9s 0.1s ease forwards;
 }
 
-/* Entrance animations for modal */
+/* ── 5. Enhanced Hover — jewelry lifts with stronger glow ── */
+.sc-comp:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset -1px 0 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 40px rgba(0, 0, 0, 0.3),
+    0 0 40px -8px rgba(201, 151, 50, 0.20),
+    0 0 80px -20px rgba(201, 151, 50, 0.10);
+  transition: box-shadow 0.5s ease;
+}
+
+.sc-comp__btn:hover .sc-comp__img {
+  transform: translateY(-4px) scale(1.06);
+  filter:
+    drop-shadow(0 20px 30px rgba(0, 0, 0, 0.9))
+    drop-shadow(0 0 30px rgba(201, 151, 50, 0.30))
+    brightness(1.12);
+}
+
+/* ── 6. Staggered Entrance Animations — items appear one by one ── */
+@keyframes sc-item-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sc-comp {
+  opacity: 0;
+  animation: sc-item-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.08s);
+}
+
+.sc-comp.sc-visible {
+  opacity: 0;
+  animation: sc-item-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.08s);
+}
+
+/* ── 7. Animated Gold Case Border — slowly shifting highlight ── */
+@keyframes sc-border-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.sc-case {
+  background-size: 200% 200%;
+  animation: sc-border-shift 8s ease-in-out infinite;
+}
+
+/* ── 8. Gold Rule Pulse — ambient breathing on gold dividers ── */
+@keyframes sc-rule-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.sc-hero__rule {
+  animation: sc-rule-pulse 4s ease-in-out infinite;
+}
+
+@keyframes sc-divider-glow {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+
+.sc-case__divider-v,
+.sc-case__divider-h {
+  animation: sc-divider-glow 5s ease-in-out infinite;
+}
+
+/* ── 9. Hero Entrance Animation ── */
+@keyframes sc-hero-fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sc-hero__eyebrow {
+  animation: sc-hero-fade 0.7s 0.1s ease both;
+}
+
+.sc-hero__title {
+  animation: sc-hero-fade 0.8s 0.2s ease both;
+}
+
+.sc-hero__rule {
+  animation: sc-hero-fade 0.6s 0.4s ease both, sc-rule-pulse 4s 1s ease-in-out infinite;
+}
+
+.sc-hero__subtitle {
+  animation: sc-hero-fade 0.7s 0.5s ease both;
+}
+
+.sc-hero__cta {
+  animation: sc-hero-fade 0.7s 0.6s ease both;
+}
+
+@keyframes sc-hero-case-enter {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.sc-hero__case {
+  animation: sc-hero-case-enter 1s 0.3s ease both;
+}
+
+/* ── 10. Modal Entrance Enhancements ── */
 @keyframes sc-detail-enter {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1953,25 +2137,93 @@
   animation: sc-detail-enter 0.5s ease both;
 }
 
-/* Ambient gold line pulse on hero rule */
-@keyframes sc-rule-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+/* ── 11. Floating Gold Particles — ambient atmosphere in the case ── */
+@keyframes sc-particle-float {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateY(-120px) translateX(30px); opacity: 0; }
 }
 
-.sc-hero__rule {
-  animation: sc-rule-pulse 4s ease-in-out infinite;
-}
-
-/* Subtle glow on product hover */
-.sc-comp:hover {
+.sc-case__interior::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(226, 184, 91, 0.5);
+  z-index: 35;
+  pointer-events: none;
+  top: 70%;
+  left: 30%;
+  animation: sc-particle-float 8s 1s ease-in-out infinite;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    inset -1px 0 0 rgba(255, 255, 255, 0.02),
-    inset 0 0 40px rgba(0, 0, 0, 0.3),
-    0 0 30px -10px rgba(201, 151, 50, 0.15);
-  transition: box-shadow 0.4s ease;
+    40vw -20px 0 0 rgba(226, 184, 91, 0.3),
+    20vw 30px 0 0 rgba(226, 184, 91, 0.25),
+    60vw -40px 0 -1px rgba(226, 184, 91, 0.35),
+    10vw 10px 0 0 rgba(226, 184, 91, 0.2),
+    50vw -10px 0 0 rgba(226, 184, 91, 0.3);
 }
+
+/* ── 12. Glass Top Panel — moving reflection ── */
+@keyframes sc-top-reflection {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
+}
+
+.sc-case-3d__top::after {
+  animation: sc-top-reflection 10s 2s ease-in-out infinite;
+  width: 25%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    transparent
+  );
+}
+
+/* ── 13. Nav Tab Hover Glow ── */
+.sc-nav__tab:hover {
+  text-shadow: 0 0 12px rgba(201, 151, 50, 0.3);
+}
+
+.sc-nav__tab.active {
+  text-shadow: 0 0 16px rgba(226, 184, 91, 0.25);
+}
+
+/* ── 14. Case Base Reflection ── */
+.sc-case-3d__base {
+  position: relative;
+  overflow: hidden;
+}
+
+.sc-case-3d__base::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 10%,
+    rgba(226, 184, 91, 0.12) 30%,
+    rgba(226, 184, 91, 0.20) 50%,
+    rgba(226, 184, 91, 0.12) 70%,
+    transparent 90%
+  );
+  opacity: 0.5;
+  animation: sc-rule-pulse 5s ease-in-out infinite;
+}
+
+/* ── 15. Gallery Image Hover Glow ── */
+.sc-gallery__main:hover .sc-gallery__img {
+  filter: drop-shadow(0 0 20px rgba(201, 151, 50, 0.15));
+  transition: filter 0.5s ease;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* ───── REDUCED MOTION ───── */
+/* ═══════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
   .sc-modal,
@@ -1980,7 +2232,28 @@
   .sc-modal__grid .sc-details,
   .sc-modal__grid .sc-modal__left,
   .sc-case__interior::after,
-  .sc-hero__rule {
-    animation: none;
+  .sc-case__interior::before,
+  .sc-case__glass::after,
+  .sc-hero__rule,
+  .sc-hero__eyebrow,
+  .sc-hero__title,
+  .sc-hero__subtitle,
+  .sc-hero__cta,
+  .sc-hero__case,
+  .sc-comp,
+  .sc-case,
+  .sc-case__divider-v,
+  .sc-case__divider-h,
+  .sc-case-3d__base::after {
+    animation: none !important;
+  }
+
+  .sc-comp {
+    opacity: 1 !important;
+  }
+
+  .sc-comp:hover::after {
+    animation: none !important;
+    opacity: 0 !important;
   }
 }
