@@ -528,18 +528,6 @@ function ProductModal({
         <div className="sc-modal__grid">
           <div className="sc-modal__left">
             <ProductGallery item={item} velvet={velvet} />
-
-            {/* Product dots indicator */}
-            <div className="sc-modal__product-dots">
-              {items.map((p) => (
-                <button
-                  key={p.slug}
-                  className={`sc-modal__product-dot${p.slug === item.slug ? ' active' : ''}`}
-                  onClick={() => onNavigate(p)}
-                  aria-label={p.name}
-                />
-              ))}
-            </div>
           </div>
 
           <div className="sc-details">
@@ -585,20 +573,37 @@ function ProductModal({
             </div>
 
             <div className="sc-video-cta">
-              <p className="sc-video-cta__eyebrow">See how this piece was created</p>
-              <p className="sc-video-cta__text">
-                Watch the 30-second journey from sketch to finished jewelry — design, CAD,
-                the bench, the polish, the reveal.
-              </p>
-              <button className="sc-video-cta__btn" onClick={onPlayVideo}>
-                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+              <div className="sc-video-cta__icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M15 8v8H5V8h10m1-2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4V7.5l-4 4V7a1 1 0 0 0-1-1z"/>
+                </svg>
+              </div>
+              <div className="sc-video-cta__content">
+                <p className="sc-video-cta__title">See How This Piece Was Created</p>
+                <p className="sc-video-cta__text">
+                  Watch the 30-second journey from sketch to finished jewelry.
+                </p>
+              </div>
+              <button className="sc-video-cta__play" onClick={onPlayVideo}>
+                Play video
+                <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor">
                   <path d="M5 2 L13 8 L5 14 Z" />
                 </svg>
-                Play video
               </button>
             </div>
 
           </div>
+        </div>
+
+        <div className="sc-modal__product-dots">
+          {items.map((p) => (
+            <button
+              key={p.slug}
+              className={`sc-modal__product-dot${p.slug === item.slug ? ' active' : ''}`}
+              onClick={() => onNavigate(p)}
+              aria-label={p.name}
+            />
+          ))}
         </div>
       </div>
     </div>

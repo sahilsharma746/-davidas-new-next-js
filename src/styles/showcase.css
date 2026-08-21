@@ -12,7 +12,11 @@
 
   padding-top: var(--nav-height, 80px);
   min-height: 100vh;
-  background: var(--sc-bg);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 151, 50, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(0, 0, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0, 0, 0, 0.2) 0%, transparent 40%),
+    var(--sc-bg);
   color: var(--color-text);
 }
 
@@ -124,12 +128,17 @@
   color: #9B7420;
 }
 
-.showcase-page[data-velvet="boutique"] .sc-video-cta__eyebrow {
+.showcase-page[data-velvet="boutique"] .sc-video-cta__title {
   color: #7A5C1A;
 }
 
 .showcase-page[data-velvet="boutique"] .sc-video-cta__text {
   color: #4A3D2E;
+}
+
+.showcase-page[data-velvet="boutique"] .sc-video-cta__play {
+  border-color: rgba(155, 116, 32, 0.35);
+  color: #7A5C1A;
 }
 
 .showcase-page[data-velvet="boutique"] .sc-details__rule {
@@ -193,10 +202,31 @@
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 300;
   line-height: 1.05;
-  letter-spacing: 0.12em;
-  color: var(--color-text);
+  letter-spacing: 0.14em;
   margin: 20px 0 0;
   text-transform: uppercase;
+  background: linear-gradient(
+    165deg,
+    var(--sc-deep-gold) 0%,
+    var(--sc-gold) 20%,
+    var(--sc-light-gold) 40%,
+    #f0e6c8 50%,
+    var(--sc-light-gold) 60%,
+    var(--sc-gold) 80%,
+    var(--sc-deep-gold) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sc-title-shimmer 8s ease-in-out infinite;
+  text-shadow: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes sc-title-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .sc-hero__rule {
@@ -204,6 +234,7 @@
   width: 160px;
   margin: 28px 0;
   background: linear-gradient(90deg, transparent, rgba(201, 151, 50, 0.15) 12%, rgba(226, 184, 91, 0.85) 50%, rgba(201, 151, 50, 0.15) 88%, transparent);
+  box-shadow: 0 0 12px 1px rgba(201, 151, 50, 0.2), 0 0 30px 2px rgba(201, 151, 50, 0.08);
 }
 
 .sc-hero__subtitle {
@@ -219,29 +250,38 @@
   display: inline-flex;
   align-items: center;
   margin-top: 36px;
-  padding: 14px 28px;
-  border: 1px solid rgba(201, 151, 50, 0.18);
+  padding: 14px 32px;
+  border: 1px solid rgba(201, 151, 50, 0.3);
   background: none;
   color: var(--sc-gold);
   font-family: var(--font-body);
   font-size: 0.6875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+  transition: all 0.4s ease;
+  position: relative;
 }
 
 .sc-hero__cta:hover {
-  border-color: var(--sc-gold);
+  border-color: var(--sc-light-gold);
   color: var(--sc-light-gold);
-  background-color: rgba(201, 151, 50, 0.08);
+  background-color: rgba(201, 151, 50, 0.06);
+  box-shadow: 0 0 20px -4px rgba(201, 151, 50, 0.2), inset 0 0 20px -8px rgba(201, 151, 50, 0.08);
+  letter-spacing: 0.28em;
 }
 
 /* Hero case frame */
 .sc-hero__case {
   position: relative;
-  padding: clamp(3px, 0vw, 16px);
+  padding: clamp(3px, 0.5vw, 8px);
   background: linear-gradient(145deg, var(--sc-deep-gold) 0%, rgba(226, 210, 160, 0.9) 22%, var(--sc-gold) 48%, rgba(230, 215, 170, 0.85) 72%, var(--sc-deep-gold) 100%);
+  background-size: 200% 200%;
+  animation: sc-border-shift 8s ease-in-out infinite;
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.7),
+    0 0 60px -10px rgba(201, 151, 50, 0.12),
+    0 0 120px -20px rgba(201, 151, 50, 0.06);
 }
 
 .sc-hero__case::after {
@@ -302,18 +342,19 @@
   position: relative;
   background: none;
   border: none;
-  padding: 0 0 8px;
+  padding: 0 0 10px;
   cursor: pointer;
   font-family: var(--font-body);
   font-size: 0.625rem;
   letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  transition: color 0.3s;
+  transition: color 0.4s, letter-spacing 0.4s;
 }
 
 .sc-nav__tab:hover {
-  color: var(--sc-gold);
+  color: var(--sc-light-gold);
+  letter-spacing: 0.38em;
 }
 
 .sc-nav__tab.active {
@@ -325,21 +366,23 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 1px;
+  height: 2px;
   width: 0;
   opacity: 0;
-  background: linear-gradient(90deg, transparent, rgba(201, 151, 50, 0.15) 12%, rgba(226, 184, 91, 0.85) 50%, rgba(201, 151, 50, 0.15) 88%, transparent);
-  transition: width 0.5s, opacity 0.5s;
+  background: linear-gradient(90deg, transparent, var(--sc-gold) 20%, var(--sc-light-gold) 50%, var(--sc-gold) 80%, transparent);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
+  box-shadow: 0 0 10px 1px rgba(201, 151, 50, 0.15);
 }
 
 .sc-nav__tab:hover::after {
   width: 100%;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .sc-nav__tab.active::after {
   width: 100%;
   opacity: 1;
+  box-shadow: 0 0 14px 2px rgba(201, 151, 50, 0.25);
 }
 
 /* ───── Display Case Section ───── */
@@ -350,12 +393,31 @@
   padding: 0 40px 16px;
 }
 
+.sc-display::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: calc(100% + 240px);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 45%, rgba(201, 151, 50, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 80% at 50% 50%, rgba(201, 151, 50, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 /* The case frame */
 .sc-case {
   position: relative;
-  padding: clamp(3px, 0vw, 16px);
+  padding: clamp(3px, 0.4vw, 6px);
   background: linear-gradient(145deg, var(--sc-deep-gold) 0%, rgba(226, 210, 160, 0.9) 22%, var(--sc-gold) 48%, rgba(230, 215, 170, 0.85) 72%, var(--sc-deep-gold) 100%);
-  box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(201, 151, 50, 0.12);
+  box-shadow:
+    0 60px 120px -40px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(201, 151, 50, 0.12),
+    0 0 80px -10px rgba(201, 151, 50, 0.15),
+    0 0 160px -30px rgba(201, 151, 50, 0.08);
   animation: sc-case-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -392,7 +454,10 @@
   z-index: 2;
   overflow: hidden;
   background: var(--sc-bg);
-  box-shadow: inset 0 0 90px 20px rgba(0, 0, 0, 0.85), inset 0 2px 0 0 rgba(0, 0, 0, 0.7);
+  box-shadow:
+    inset 0 0 100px 30px rgba(0, 0, 0, 0.9),
+    inset 0 2px 0 0 rgba(0, 0, 0, 0.7),
+    inset 0 -20px 60px -20px rgba(201, 151, 50, 0.04);
 }
 
 .sc-case__velvet-img {
@@ -408,7 +473,10 @@
 .sc-case__vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(120% 90% at 50% 0%, rgba(30, 28, 24, 0.55) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 50% 40% at 50% -5%, rgba(226, 184, 91, 0.06) 0%, transparent 60%),
+    radial-gradient(120% 90% at 50% 0%, rgba(30, 28, 24, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -431,18 +499,20 @@
 
 .sc-case__divider-v {
   position: absolute;
-  top: 24px;
-  bottom: 24px;
+  top: 16px;
+  bottom: 16px;
   width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(201, 151, 50, 0.20) 8%, rgba(226, 184, 91, 0.65) 50%, rgba(201, 151, 50, 0.20) 92%, transparent);
+  background: linear-gradient(180deg, transparent, rgba(201, 151, 50, 0.25) 8%, rgba(226, 184, 91, 0.75) 50%, rgba(201, 151, 50, 0.25) 92%, transparent);
+  box-shadow: 0 0 8px rgba(201, 151, 50, 0.15);
 }
 
 .sc-case__divider-h {
   position: absolute;
-  left: 32px;
-  right: 32px;
+  left: 24px;
+  right: 24px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 151, 50, 0.20) 8%, rgba(226, 184, 91, 0.65) 50%, rgba(201, 151, 50, 0.20) 92%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(201, 151, 50, 0.25) 8%, rgba(226, 184, 91, 0.75) 50%, rgba(201, 151, 50, 0.25) 92%, transparent);
+  box-shadow: 0 0 8px rgba(201, 151, 50, 0.15);
 }
 
 /* Glass sheen — smoky tint + light streaks */
@@ -455,22 +525,23 @@
     linear-gradient(
       125deg,
       transparent 15%,
-      rgba(255, 255, 255, 0.06) 30%,
-      rgba(255, 255, 255, 0.14) 37%,
-      rgba(255, 255, 255, 0.06) 44%,
+      rgba(255, 255, 255, 0.07) 30%,
+      rgba(255, 255, 255, 0.18) 37%,
+      rgba(255, 255, 255, 0.07) 44%,
       transparent 58%,
       transparent 68%,
-      rgba(255, 255, 255, 0.04) 76%,
-      rgba(255, 255, 255, 0.10) 80%,
-      rgba(255, 255, 255, 0.04) 84%,
+      rgba(255, 255, 255, 0.05) 76%,
+      rgba(255, 255, 255, 0.13) 80%,
+      rgba(255, 255, 255, 0.05) 84%,
       transparent 95%
     ),
-    rgba(15, 18, 22, 0.12);
+    rgba(15, 18, 22, 0.10);
 }
 
 /* ───── 3D Glass Case ───── */
 .sc-case-3d {
   position: relative;
+  filter: drop-shadow(0 0 60px rgba(201, 151, 50, 0.06));
 }
 
 /* Glass top panel — trapezoid giving depth illusion */
@@ -479,13 +550,14 @@
   height: clamp(30px, 4vw, 60px);
   background: linear-gradient(
     180deg,
-    rgba(20, 25, 30, 0.25) 0%,
+    rgba(20, 25, 30, 0.2) 0%,
     rgba(30, 35, 40, 0.35) 100%
   );
-  border: 1px solid rgba(180, 200, 220, 0.25);
+  border: 1px solid rgba(201, 160, 50, 0.2);
   border-bottom: none;
   clip-path: polygon(3.5% 0%, 96.5% 0%, 100% 100%, 0% 100%);
   overflow: hidden;
+  box-shadow: 0 -4px 30px -8px rgba(201, 151, 50, 0.08);
 }
 
 /* Light reflection streak on top panel */
@@ -541,10 +613,10 @@
   background: linear-gradient(
     180deg,
     rgba(20, 25, 30, 0.3) 0%,
-    rgba(20, 25, 30, 0.15) 50%,
+    rgba(20, 25, 30, 0.12) 50%,
     rgba(20, 25, 30, 0.3) 100%
   );
-  border: 1px solid rgba(180, 200, 220, 0.22);
+  border: 1px solid rgba(201, 160, 50, 0.18);
   overflow: hidden;
 }
 
@@ -618,17 +690,19 @@
 
 /* Base / pedestal */
 .sc-case-3d__base {
-  height: clamp(10px, 1.5vw, 22px);
+  height: clamp(12px, 1.8vw, 26px);
   background: linear-gradient(
     180deg,
-    rgba(201, 160, 50, 0.25) 0%,
-    rgba(201, 160, 50, 0.12) 40%,
-    rgba(201, 160, 50, 0.06) 100%
+    rgba(201, 160, 50, 0.3) 0%,
+    rgba(201, 160, 50, 0.15) 40%,
+    rgba(201, 160, 50, 0.08) 100%
   );
-  border: 1px solid rgba(201, 160, 50, 0.15);
+  border: 1px solid rgba(201, 160, 50, 0.2);
   border-top: none;
-  border-radius: 0 0 3px 3px;
-  box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 4px 4px;
+  box-shadow:
+    0 12px 40px -8px rgba(0, 0, 0, 0.6),
+    0 4px 20px -4px rgba(201, 151, 50, 0.08);
 }
 
 /* Hide 3D glass panels on mobile — flatten to simple case */
@@ -645,29 +719,33 @@
 .sc-comp {
   position: relative;
   padding: 0;
-  border: 1px solid rgba(201, 160, 50, 0.2);
+  border: 1px solid rgba(201, 160, 50, 0.25);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    inset -1px 0 0 rgba(255, 255, 255, 0.02),
-    inset 0 0 40px rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset -1px 0 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 50px rgba(0, 0, 0, 0.4),
+    inset 0 0 80px -20px rgba(201, 151, 50, 0.06);
   overflow: hidden;
 }
 
-/* Per-cell glass shine */
+/* Per-cell glass shine + overhead display light */
 .sc-comp::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 25;
   pointer-events: none;
-  background: linear-gradient(
-    140deg,
-    transparent 25%,
-    rgba(255, 255, 255, 0.03) 40%,
-    rgba(255, 255, 255, 0.06) 44%,
-    rgba(255, 255, 255, 0.03) 48%,
-    transparent 60%
-  );
+  background:
+    radial-gradient(ellipse 70% 45% at 50% -10%, rgba(255, 255, 255, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 0%, rgba(226, 184, 91, 0.05) 0%, transparent 60%),
+    linear-gradient(
+      140deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.04) 40%,
+      rgba(255, 255, 255, 0.08) 44%,
+      rgba(255, 255, 255, 0.04) 48%,
+      transparent 60%
+    );
 }
 
 .sc-comp__btn {
@@ -749,24 +827,28 @@
 
 /* Velvet cushion — real image */
 .sc-comp__cushion {
-  width: 64%;
+  width: 66%;
   height: auto;
   margin-top: -30%;
   pointer-events: none;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  filter:
+    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
   position: relative;
   z-index: 5;
 }
 
 .sc-comp__img {
-  max-width: 40%;
+  max-width: 42%;
   max-height: 65%;
   object-fit: contain;
   position: relative;
   z-index: 6;
   transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), filter 0.42s ease;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.85));
+  filter:
+    drop-shadow(0 8px 14px rgba(0, 0, 0, 0.9))
+    drop-shadow(0 0 6px rgba(201, 151, 50, 0.08));
 }
 
 
@@ -816,12 +898,13 @@
   letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  transition: color 0.3s;
+  transition: color 0.4s, letter-spacing 0.4s;
   padding: 8px 0;
 }
 
 .sc-case-nav__btn:hover:not(:disabled) {
   color: var(--sc-light-gold);
+  text-shadow: 0 0 12px rgba(201, 151, 50, 0.2);
 }
 
 .sc-case-nav__btn:disabled {
@@ -857,10 +940,12 @@
 .sc-case-nav__title {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-text);
-  opacity: 0.9;
+  background: linear-gradient(135deg, var(--sc-gold), var(--sc-light-gold) 40%, #f0e6c8 60%, var(--sc-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
 }
 
@@ -884,6 +969,7 @@
 .sc-case-nav__dot.active {
   background: var(--sc-gold);
   transform: scale(1.15);
+  box-shadow: 0 0 8px rgba(201, 151, 50, 0.4), 0 0 16px rgba(201, 151, 50, 0.15);
 }
 
 .sc-case-nav__dot:hover:not(.active) {
@@ -1004,7 +1090,7 @@
   display: flex;
   gap: 8px;
   justify-content: center;
-  margin-top: 20px;
+  padding: 14px 0 16px;
 }
 
 .sc-modal__product-dot {
@@ -1067,25 +1153,33 @@
   right: 16px;
   top: 16px;
   z-index: 20;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  color: var(--color-text-muted);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--sc-overlay-rgb), 0.7);
+  border: 1px solid rgba(201, 151, 50, 0.3);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  color: var(--sc-gold);
   cursor: pointer;
   line-height: 1;
-  transition: color 0.3s;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
 }
 
 .sc-modal__close:hover {
-  color: var(--sc-light-gold);
+  background: rgba(var(--sc-overlay-rgb), 0.9);
+  border-color: var(--sc-gold);
+  transform: scale(1.1);
 }
 
 .sc-modal__grid {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  padding: 40px;
+  gap: 36px;
+  padding: 28px 32px;
 }
 
 /* ───── "From Sketch to Showcase" Creation Tabs ───── */
@@ -1229,8 +1323,7 @@
 .sc-modal__left {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  align-self: start;
+  gap: 16px;
 }
 
 /* Gallery layout */
@@ -1249,7 +1342,6 @@
 
 .sc-gallery__thumb {
   position: relative;
-  aspect-ratio: 1;
   overflow: hidden;
   border: 1px solid rgba(201, 151, 50, 0.12);
   background: var(--sc-bg);
@@ -1258,7 +1350,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .sc-gallery__thumb:hover {
@@ -1271,7 +1362,7 @@
 
 .sc-gallery__thumb-img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1;
   object-fit: contain;
   padding: 4px;
 }
@@ -1282,6 +1373,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-dim);
+  padding: 4px 0 6px;
 }
 
 /* Modal details */
@@ -1301,12 +1393,12 @@
 
 .sc-details__name {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
   font-weight: 300;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text);
-  margin: 16px 0 0;
+  margin: 10px 0 0;
   line-height: 1.1;
 }
 
@@ -1315,26 +1407,26 @@
   font-size: 0.85rem;
   letter-spacing: 0.22em;
   color: var(--sc-gold);
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .sc-details__rule {
   height: 1px;
   width: 128px;
-  margin: 24px 0;
+  margin: 16px 0;
   background: linear-gradient(90deg, transparent, rgba(201, 151, 50, 0.15) 12%, rgba(226, 184, 91, 0.85) 50%, rgba(201, 151, 50, 0.15) 88%, transparent);
 }
 
 .sc-details__desc {
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.65;
 }
 
 /* Specs */
 .sc-details__specs {
-  margin-top: 32px;
+  margin-top: 20px;
   border-top: 1px solid rgba(201, 151, 50, 0.12);
   border-bottom: 1px solid rgba(201, 151, 50, 0.12);
 }
@@ -1343,7 +1435,7 @@
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(201, 151, 50, 0.08);
 }
 
@@ -1353,16 +1445,15 @@
 
 .sc-details__spec-label {
   font-family: var(--font-body);
-  font-size: 0.625rem;
-  letter-spacing: 0.34em;
+  font-size: 0.675rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  opacity: 0.8;
 }
 
 .sc-details__spec-value {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.05em;
   color: var(--color-text);
   opacity: 0.9;
@@ -1374,14 +1465,14 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 20px;
 }
 
 .sc-btn-gold {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 32px;
+  padding: 12px 28px;
   background: linear-gradient(145deg, var(--sc-deep-gold) 0%, rgba(226, 210, 160, 0.9) 22%, var(--sc-gold) 48%, rgba(230, 215, 170, 0.85) 72%, var(--sc-deep-gold) 100%);
   color: #1a1206;
   border: none;
@@ -1401,7 +1492,7 @@
 .sc-btn-outline {
   display: inline-flex;
   align-items: center;
-  padding: 14px 32px;
+  padding: 12px 28px;
   background: none;
   border: 1px solid rgba(201, 151, 50, 0.18);
   color: var(--sc-gold);
@@ -1471,20 +1562,23 @@
   opacity: 0.7;
 }
 
-/* Video CTA inline */
+/* Video CTA */
 .sc-video-cta {
-  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
   border: 1px solid rgba(201, 151, 50, 0.12);
-  background: rgba(18, 20, 22, 0.6);
-  padding: 24px;
+  background: rgba(18, 20, 22, 0.5);
+  padding: 14px 18px;
 }
 
 .sc-video-cta__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: linear-gradient(145deg, var(--sc-deep-gold) 0%, rgba(226, 210, 160, 0.9) 22%, var(--sc-gold) 48%, rgba(230, 215, 170, 0.85) 72%, var(--sc-deep-gold) 100%);
   color: #1a1206;
@@ -1498,24 +1592,28 @@
 
 .sc-video-cta__title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-style: italic;
   letter-spacing: 0.06em;
   color: var(--sc-gold);
 }
 
-.sc-video-cta .sc-video-cta__text {
-  margin-top: 10px;
+.sc-video-cta__text {
+  font-family: var(--font-body);
   font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  margin-top: 4px;
 }
 
 .sc-video-cta__play {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 24px;
+  padding: 12px 28px;
   background: none;
-  border: 1px solid rgba(201, 151, 50, 0.3);
+  border: 1px solid rgba(201, 151, 50, 0.35);
   color: var(--sc-gold);
   font-family: var(--font-body);
   font-size: 0.6875rem;
@@ -1523,6 +1621,7 @@
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: border-color 0.3s, background 0.3s;
 }
 
@@ -1531,43 +1630,16 @@
   background: rgba(201, 151, 50, 0.08);
 }
 
-.sc-video-cta__eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.625rem;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--sc-gold);
-}
-
-.sc-video-cta__text {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  letter-spacing: 0.03em;
-  margin-top: 12px;
-}
-
-.sc-video-cta__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: linear-gradient(145deg, var(--sc-deep-gold) 0%, rgba(226, 210, 160, 0.9) 22%, var(--sc-gold) 48%, rgba(230, 215, 170, 0.85) 72%, var(--sc-deep-gold) 100%);
-  color: #1a1206;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: box-shadow 0.3s, filter 0.3s;
-}
-
-.sc-video-cta__btn:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 40px -6px rgba(201, 151, 50, 0.45);
+@media (max-width: 600px) {
+  .sc-video-cta {
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+  .sc-video-cta__play {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ───── Video Modal ───── */
@@ -1909,10 +1981,10 @@
 /* ───── LUXURY EFFECTS SYSTEM ───── */
 /* ═══════════════════════════════════════════════════ */
 
-/* ── 1. Ambient Case Glow — soft golden spotlight in the case interior ── */
+/* ── 1. Ambient Case Glow — warm museum spotlight from above ── */
 @keyframes sc-ambient-glow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .sc-case__interior::after {
@@ -1922,9 +1994,12 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 45% 35% at 50% 25%, rgba(201, 151, 50, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 30% 50% at 20% 60%, rgba(201, 151, 50, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 50% at 80% 60%, rgba(201, 151, 50, 0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 35% at 50% -5%, rgba(226, 184, 91, 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 25% 40% at 25% 30%, rgba(201, 151, 50, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 40% at 75% 30%, rgba(201, 151, 50, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 25% at 50% 50%, rgba(201, 151, 50, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 50% at 15% 70%, rgba(201, 151, 50, 0.03) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 50% at 85% 70%, rgba(201, 151, 50, 0.03) 0%, transparent 55%);
   animation: sc-ambient-glow 6s ease-in-out infinite;
 }
 
@@ -1939,39 +2014,46 @@
   position: absolute;
   top: -20%;
   bottom: -20%;
-  width: 30%;
+  width: 25%;
   z-index: 31;
   pointer-events: none;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.03) 20%,
-    rgba(255, 255, 255, 0.07) 50%,
-    rgba(255, 255, 255, 0.03) 80%,
+    rgba(255, 255, 255, 0.02) 15%,
+    rgba(255, 255, 255, 0.06) 35%,
+    rgba(255, 255, 255, 0.10) 50%,
+    rgba(255, 255, 255, 0.06) 65%,
+    rgba(255, 255, 255, 0.02) 85%,
     transparent
   );
-  animation: sc-glass-sweep 12s ease-in-out infinite;
+  animation: sc-glass-sweep 10s 1s ease-in-out infinite;
 }
 
-/* ── 3. Per-Item Spotlight — golden glow behind each jewelry piece ── */
+/* ── 3. Per-Item Spotlight — overhead display light on each piece ── */
 .sc-comp__image::before {
   content: '';
   position: absolute;
-  top: 10%;
+  top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
-  height: 50%;
+  width: 80%;
+  height: 70%;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(201, 151, 50, 0.08) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse, rgba(201, 151, 50, 0.08) 0%, rgba(201, 151, 50, 0.03) 40%, transparent 70%);
   z-index: 1;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  opacity: 1;
+  transition: all 0.6s ease;
 }
 
 .sc-comp:hover .sc-comp__image::before {
   opacity: 1;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse, rgba(201, 151, 50, 0.18) 0%, rgba(201, 151, 50, 0.08) 40%, transparent 70%);
 }
 
 /* ── 4. Shimmer Sweep on Hover — light catches the glass over each piece ── */
@@ -2007,23 +2089,27 @@
   animation: sc-shimmer 0.9s 0.1s ease forwards;
 }
 
-/* ── 5. Enhanced Hover — jewelry lifts with stronger glow ── */
+/* ── 5. Enhanced Hover — jewelry lifts with royal golden aura ── */
 .sc-comp:hover {
+  border-color: rgba(226, 184, 91, 0.5);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset -1px 0 0 rgba(255, 255, 255, 0.03),
-    inset 0 0 40px rgba(0, 0, 0, 0.3),
-    0 0 40px -8px rgba(201, 151, 50, 0.20),
-    0 0 80px -20px rgba(201, 151, 50, 0.10);
-  transition: box-shadow 0.5s ease;
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset -1px 0 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 60px rgba(0, 0, 0, 0.25),
+    inset 0 0 80px -15px rgba(201, 151, 50, 0.12),
+    0 0 30px -4px rgba(201, 151, 50, 0.30),
+    0 0 60px -10px rgba(201, 151, 50, 0.18),
+    0 0 120px -25px rgba(201, 151, 50, 0.10);
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
 }
 
 .sc-comp__btn:hover .sc-comp__img {
-  transform: translateY(-4px) scale(1.06);
+  transform: translateY(-8px) scale(1.10);
   filter:
-    drop-shadow(0 20px 30px rgba(0, 0, 0, 0.9))
-    drop-shadow(0 0 30px rgba(201, 151, 50, 0.30))
-    brightness(1.12);
+    drop-shadow(0 28px 40px rgba(0, 0, 0, 0.9))
+    drop-shadow(0 0 50px rgba(201, 151, 50, 0.40))
+    drop-shadow(0 0 20px rgba(226, 184, 91, 0.15))
+    brightness(1.18);
 }
 
 /* ── 6. Staggered Entrance Animations — items appear one by one ── */
@@ -2151,18 +2237,20 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: rgba(226, 184, 91, 0.5);
+  background: rgba(226, 184, 91, 0.6);
   z-index: 35;
   pointer-events: none;
   top: 70%;
   left: 30%;
   animation: sc-particle-float 8s 1s ease-in-out infinite;
   box-shadow:
-    40vw -20px 0 0 rgba(226, 184, 91, 0.3),
-    20vw 30px 0 0 rgba(226, 184, 91, 0.25),
-    60vw -40px 0 -1px rgba(226, 184, 91, 0.35),
-    10vw 10px 0 0 rgba(226, 184, 91, 0.2),
-    50vw -10px 0 0 rgba(226, 184, 91, 0.3);
+    40vw -20px 0 0 rgba(226, 184, 91, 0.4),
+    20vw 30px 0 0 rgba(226, 184, 91, 0.3),
+    60vw -40px 0 -1px rgba(226, 184, 91, 0.45),
+    10vw 10px 0 0 rgba(226, 184, 91, 0.25),
+    50vw -10px 0 0 rgba(226, 184, 91, 0.35),
+    35vw 15px 0 0 rgba(226, 184, 91, 0.3),
+    70vw -30px 0 -1px rgba(226, 184, 91, 0.2);
 }
 
 /* ── 12. Glass Top Panel — moving reflection ── */
