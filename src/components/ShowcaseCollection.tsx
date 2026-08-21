@@ -109,6 +109,12 @@ function ShowcaseProduct({
       >
         {isFavorite ? '♥' : '♡'}
       </button>
+      <div className="sc-comp__spotlight" />
+      <div className="sc-comp__sparkles">
+        <span className="sc-comp__sparkle" />
+        <span className="sc-comp__sparkle" />
+        <span className="sc-comp__sparkle" />
+      </div>
       <button
         className="sc-comp__btn"
         onClick={() => onSelect(item)}
@@ -127,6 +133,7 @@ function ShowcaseProduct({
             aria-hidden="true"
             className="sc-comp__cushion"
           />
+          <div className="sc-comp__reflection" />
         </div>
         <span className="sc-comp__info">
           <span className="sc-comp__name">{item.name}</span>
